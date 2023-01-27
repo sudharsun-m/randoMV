@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{% static 'res/logo.jpg' %}">
+    <title>Movies Recommendation System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'style/bootstrap.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'style/style.css'%}" />
+    <script>
+        function submit_form() {
+            document.getElementById('thisForm').submit();
+        }
+    </script>
+</head>
+
+<body style="background: url({% static 'res/bg.jpg'%});background-repeat:repeat;background-size:contain">
+    <header class="header_section">
+        <div class="container-fluid">
+            <nav class="navbar custom_nav-container">
+                <a class="navbar-brand" href="">
+                    <img src="{% static 'res/logo.png'%}" alt="">
+                    <span>
+      MOVIE RECOMMENDATIONS
+    </span>
+                </a>
+                <span class="txt">
+                    40,000+ Movies
+                </span>
+                <span class="txt">
+                    20+ Genres
+                </span>
+                <span class="txt">
+                    100+ Languages
+                </span>
+
+            </nav>
+        </div>
+    </header>
+    <div>
+        <form id="thisForm" method="POST" action="" class="d-flex justify-content-around">
+            {% csrf_token %}
+
+            <select class="custom-select sel" onchange="submit_form()" name="byGenre">
+            <option value="--no--">--By genre--</option>
+            <option value="Action">Action</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Family">Family</option>
+            <option value="Crime">Crime</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Mystery">Mystery</option>
+            <option value="Romance">Romance</option>
+            <option value="Thriller">Thriller</option>
+            <option value="Drama">Drama</option>
+        </select>
+            <select class="custom-select sel" onchange="submit_form()" name="byYear">
+            <option value="--no--">--By year--</option>
+            <option value="1910">1910</option>
+            <option value="1930">1930</option>
+            <option value="1940">1940</option>
+            <option value="1960">1960</option>
+            <option value="1980">1980</option>
+            <option value="2000">2000</option>
+            <option value="2010">2010</option>
+            <option value="2011">2011</option>
+        </select>
+            <button type="submit" class="custom-select sel" style="background: none; background-color: #fff;">Randomize</button>
+        </form>
+    </div>
+    <div class="d-flex justify-content-center">
+        <div class="movie-container d-flex flex-column mb-3">
+            <div class="movie-row">
+                <div class="movie-card">
+                    <div class="card-body">
+                        <h5 class="card-title"> <span>{{mv1.ti}}({{mv1.yr}})</span>
+                        </h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{mv1.ge}}</h6>
+                        <p class="card-text">{{mv1.ov}}</p>
+                        <small class="card-subtitle mb-5 "><span >{{mv1.ra}}/10 
+                        </span></small>
+                        <small class="card-subtitle mb-2 ">- {{mv1.la}}</small>
+                    </div>
+                </div>
+                <div class="movie-card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{mv2.ti}}({{mv2.yr}})</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{mv2.ge}}</h6>
+                        <p class="card-text">{{mv2.ov}}</p>
+                        <small class="card-subtitle mb-5 "><span >{{mv2.ra}}/10 
+                        </span></small>
+                        <small class="card-subtitle mb-2 ">- {{mv2.la}}</small>
+                    </div>
+                </div>
+            </div>
+            <div class="movie-row">
+                <div class="movie-card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{mv3.ti}}({{mv3.yr}})</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{mv3.ge}}</h6>
+                        <p class="card-text">{{mv3.ov}}</p>
+                        <small class="card-subtitle mb-5 "><span >{{mv3.ra}}/10 
+                        </span></small>
+                        <small class="card-subtitle mb-2 ">- {{mv3.la}}</small>
+                    </div>
+                </div>
+                <div class="movie-card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{mv4.ti}}({{mv4.yr}})</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{mv4.ge}}</h6>
+                        <p class="card-text">{{mv4.ov}}</p>
+                        <small class="card-subtitle mb-5 "><span >{{mv4.ra}}/10 
+                        </span></small>
+                        <small class="card-subtitle mb-2 ">- {{mv4.la}}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <style>
+        body {
+            background-color: rgb(38, 38, 38);
+        }
+        
+        .topbar {
+            display: grid;
+            background-color: black;
+            height: 4rem;
+        }
+        
+        .logo {}
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M-R-S</title>
+</head>
+<script>
+    function submit_form() {
+        document.getElementById('thisForm').submit();
+    }
+</script>
+
+<body onload="">
+    <div class="topbar">
+        <img class="logo" src="{% static 'res/logo.jpg' %}">
+        <div></div>
+    </div>
+    <a href=""><button>REFRESH</button></a>
+    <form id="thisForm" method="POST" action="">
+
+
+        <select onchange="submit_form()" name="byGenre">
+            <option value="--no--">--By genre--</option>
+            <option value="Action">Action</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Family">Family</option>
+            <option value="Crime">Crime</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Mystery">Mystery/option>
+            <option value="Romance">Romance</option>
+            <option value="Thriller">Thriller</option>
+
+            </select>
+        <select onchange="submit_form()" name="byYear">
+            <option value="--no--">--By year--</option>
+            <option value="1910">1910</option>
+            <option value="1930">1930</option>
+            <option value="1940">1940</option>
+            <option value="1960">1960</option>
+            <option value="1980">1980</option>
+            <option value="2000">2000</option>
+            <option value="2010">2010</option>
+            <option value="2011">2011</option>
+
+        </select> {% csrf_token %}
+        <br>
+        <small>By {{mv1.by}}</small>
+        <br>
+        <div>
+            <small>Name : {{mv1.ti}}</small><br>
+            <small>Overview : {{mv1.ov}}</small>
+            <br><small>genere : {{mv1.ge}}</small>
+            <br><small>year : {{mv1.yr}}</small>
+
+        </div>
+        <br>
+        <div>
+            <small>Name : {{mv2.ti}}</small><br>
+            <small>Overview :{{mv2.ov}}</small>
+            <br><small>genere : {{mv2.ge}}</small>
+            <br><small>year : {{mv2.yr}}</small>
+
+        </div>
+        <br>
+        <div>
+            <small>Name : {{mv3.ti}}</small><br>
+            <small>Overview :{{mv3.ov}}</small>
+            <br><small>genere : {{mv3.ge}}</small>
+            <br><small>year : {{mv3.yr}}</small>
+        </div>
+        <br>
+        <div>
+            <small>Name : {{mv4.ti}}</small><br>
+            <small>Overview :{{mv4.ov}}</small>
+            <br><small>genere : {{mv4.ge}}</small>
+            <br><small>year : {{mv4.yr}}</small>
+
+        </div>
+
+    </form>
+</body>
+
+</html>
